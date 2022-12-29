@@ -1,0 +1,12 @@
+spring:
+  main:
+    web-application-type: REACTIVE
+  sql:
+    init:
+      mode: always
+      platform: h2
+
+logging.level:
+  org:
+    springframework:
+      r2dbc: DEBUG
