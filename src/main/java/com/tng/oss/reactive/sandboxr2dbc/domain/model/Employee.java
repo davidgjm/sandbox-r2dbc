@@ -8,13 +8,15 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table
 @AllArgsConstructor
 @Data
-public class Person {
+public class Employee {
     @Id
     private final Long id;
     private final String firstName;
     private final String lastName;
 
-    public static Person of(String firstName, String lastName) {
-        return new Person(null, firstName, lastName);
+    private String email;
+
+    public static Employee of(String firstName, String lastName, String email) {
+        return new Employee(null, firstName, lastName, email);
     }
 }

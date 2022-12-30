@@ -4,3 +4,11 @@ first_name VARCHAR(256) NOT NULL,
 last_name VARCHAR(256) NOT NULL,
 PRIMARY KEY (id)
 );
+
+CREATE TABLE employee (
+id BIGINT auto_increment NOT NULL,
+first_name VARCHAR(256) NOT NULL,
+last_name VARCHAR(256) NOT NULL,
+email VARCHAR(256) NOT NULL UNIQUE,
+PRIMARY KEY (id)
+);

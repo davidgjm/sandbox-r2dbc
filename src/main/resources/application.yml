@@ -9,4 +9,7 @@ spring:
 logging.level:
   org:
     springframework:
-      r2dbc: DEBUG
+      r2dbc: TRACE
+      cache: TRACE
+  reactor:
+    core: TRACE

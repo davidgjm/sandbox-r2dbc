@@ -25,11 +25,11 @@ public class SandboxR2dbcApplication {
 
         return (args) -> {
             // save a few customers
-            repository.saveAll(Arrays.asList(new Person("Jack", "Bauer"),
-                            new Person("Chloe", "O'Brian"),
-                            new Person("Kim", "Bauer"),
-                            new Person("David", "Palmer"),
-                            new Person("Michelle", "Dessler")))
+            repository.saveAll(Arrays.asList(Person.of("Jack", "Bauer"),
+                            Person.of("Chloe", "O'Brian"),
+                            Person.of("Kim", "Bauer"),
+                            Person.of("David", "Palmer"),
+                            Person.of("Michelle", "Dessler")))
                     .blockLast(Duration.ofSeconds(10));
 
             // fetch all customers

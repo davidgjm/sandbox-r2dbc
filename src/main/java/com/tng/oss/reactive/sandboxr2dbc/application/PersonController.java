@@ -2,7 +2,6 @@ package com.tng.oss.reactive.sandboxr2dbc.application;
 
 import com.tng.oss.reactive.sandboxr2dbc.domain.model.Person;
 import com.tng.oss.reactive.sandboxr2dbc.domain.service.PersonService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +16,13 @@ import reactor.core.scheduler.Schedulers;
 public class PersonController {
     private final PersonService service;
 
-     @GetMapping
+    @GetMapping
     public Flux<Person> findPersons() {
         log.info("Querying current persons in database");
         return service.findAll()
                 .subscribeOn(Schedulers.boundedElastic())
                 .doOnNext(Person -> log.info("Persisted entity: {}", Person))
-        ;
+                ;
     }
 
     @PostMapping
@@ -36,20 +35,4 @@ public class PersonController {
                 ;
     }
 
-    @Data
-    public static class PersonDto {
-        private String firstName;
-        private String lastName;
-
-        public Person Person() {
-            return new Person(firstName, lastName);
-        }
-
-        public static PersonDto from(Person Person) {
-            var dto = new PersonDto();
-            dto.setFirstName(Person.getFirstName());
-            dto.setLastName(Person.getLastName());
-            return dto;
-        }
-    }
 }
